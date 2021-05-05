@@ -1,0 +1,28 @@
+<div>
+  <h1 mat-dialog-title> Weather Forecast</h1>
+  <div>
+    <mat-form-field appareance="fill">
+      <mat-label>Reminders List</mat-label>
+      <mat-select [(value)]="cornerVal">
+        <mat-option *ngFor="let corner of data; let ing = index" [value]="corner"  [style.background-color]="corner.color">
+          {{(corner.reminderText)}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div *ngIf="foreCastOn">
+    <h2>The current forecast for the next 5 days in the city of {{cornerVal.city}} is: </h2>
+    <h4>(In intervals of 3 hours...)</h4>
+    <mat-grid-list cols="4" rowHeight="14vh">
+      <mat-grid-tile  class="dayBlock" *ngFor="let result of currentResults">
+          <span><strong>Time: {{result.dt_txt}}</strong></span>
+          <img class="centerImage" src="http://openweathermap.org/img/w/{{result.weather[0].icon}}.png">
+          <span>Description: {{result.weather[0].description}}</span>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="showForecast(true)">Display Forecast for city</button>
+    <button mat-raised-button color="warn" (click)="showForecast(false)">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="main-div">
+  <div>
+    <button mat-raised-button class="movementIcon" color="primary"
+    (click)="moveMonthInCalendar(false)">
+      <mat-icon>
+        chevron_left
+      </mat-icon>
+    </button>
+  </div>
+  <mat-card class="main-card">
+      <h1 mat-card-title>  {{formatMonth(currentMonthObj.Month)}} - {{currentMonthObj.Year}}</h1>
+      <mat-grid-list  cols="7" rowHeight="2vh">
+        <div *ngFor="let day of daysOfTheWeek">
+          <mat-grid-tile class="daysOfWeek">
+            {{day}}
+          </mat-grid-tile>
+        </div>
+      </mat-grid-list>
+      <mat-grid-list cols="7" rowHeight="13.4vh">
+        <div *ngFor="let day of currentMonthObj.dayData; let i = index">
+            <mat-grid-tile  class="dayBlock" [class.freeDay]="isFreeDay(i)"
+            [class.outOfMonth]="!day.isInsideMonth" hover-class="hoverItem">
+
+              <span class="dayNumber"><strong>{{day.dayIndex}}</strong></span>
+
+              <div class="reminderSection">
+                <div *ngIf="day.data.reminder.length <= 4" class="remindFieldsDiv">
+                  <div *ngFor="let reminder of day.data.reminder; let i = index">
+                    <button [style.background-color]="reminder.color"
+                    (click)="editReminder(reminder, day, i)">
+                      {{formatRemindText(reminder.reminderText)}}
+                    </button>
+                  </div>
+                </div>
+                <div *ngIf="day.data.reminder.length > 4">
+                  <mat-form-field appareance="fill">
+                    <mat-label>Reminders List</mat-label>
+                    <mat-select>
+                      <mat-option (click)="editReminder(corner, day, ing)" *ngFor="let corner of day.data.reminder; let ing = index" [value]="formatRemindText(corner.reminderText)" [style.background-color]="corner.color">
+                        {{formatRemindText(corner.reminderText)}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="deleteFunc">
+                <span (click)="addReminder(day)">
+                  Add Reminder
+                </span>
+                <div *ngIf="day.data.reminder.length > 0">
+                  <mat-icon title="Delete Records Menu" class="actionIcon" (click)="deleteData(day)">
+                    delete
+                  </mat-icon>
+                </div>
+                <div *ngIf="day.data.reminder.length > 0">
+                  <mat-icon title="Forecast Data" class="actionIcon" (click)="getForecastData(day)">
+                    stream
+                  </mat-icon>
+                </div>
+              </div>
+
+            </mat-grid-tile>
+        </div>
+      </mat-grid-list>
+  </mat-card>
+  <div>
+    <button mat-raised-button class="movementIcon" color="primary"
+    (click)="moveMonthInCalendar(true)">
+      <mat-icon>
+        chevron_right
+      </mat-icon>
+    </button>
+  </div>
+</div>
+

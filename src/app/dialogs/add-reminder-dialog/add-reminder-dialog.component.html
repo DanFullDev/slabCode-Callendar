@@ -1,0 +1,57 @@
+<div *ngIf="!data">
+  <h1 mat-dialog-title> Add reminder </h1>
+  <div>
+    <form  class="fieldStrut" [formGroup]="reminderForm">
+      <mat-form-field appearance="fill" formControlName="descriptionField" ngDefaultControl>
+        <mat-label>Description</mat-label>
+        <input matInput maxlength="30" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" formControlName="cityField" ngDefaultControl>
+        <mat-label>City</mat-label>
+        <input matInput required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" formControlName="dateField" ngDefaultControl>
+        <mat-label>Time</mat-label>
+        <input type="time" matInput required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" formControlName="colorField" ngDefaultControl>
+        <mat-label>Color</mat-label>
+        <input matInput disabled value="{{color}}" class="colorField" name="colorInput" >
+        <input [(colorPicker)]="color" [style.background]="color" class="colorField colorPick">
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="addReminder(true)">Add Reminder</button>
+    <button mat-raised-button color="warn" (click)="addReminder(false)">Cancel</button>
+  </div>
+</div>
+<div *ngIf="data">
+  <h1 mat-dialog-title> Edit reminder </h1>
+  <div>
+    <form  class="fieldStrut" [formGroup]="updateForm">
+      <mat-form-field appearance="fill" formControlName="updateTextField" ngDefaultControl>
+        <mat-label>Description</mat-label>
+        <input matInput maxlength="30" [(value)]="descrpText">
+      </mat-form-field>
+      <mat-form-field appearance="fill" formControlName="updateCityField" ngDefaultControl>
+        <mat-label>City</mat-label>
+        <input matInput [(value)]="cityVal">
+      </mat-form-field>
+      <mat-form-field appearance="fill" formControlName="updateDateField" ngDefaultControl>
+        <mat-label>Time</mat-label>
+        <input type="time" [(value)]="timeVal" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill" formControlName="updateColorField" ngDefaultControl>
+        <mat-label>Color</mat-label>
+        <input matInput disabled value="{{color}}" class="colorField" name="colorInput">
+        <input [(colorPicker)]="color" [style.background]="color" class="colorField colorPick">
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="updateReminder()">Update Reminder</button>
+    <button mat-raised-button color="warn" (click)="addReminder(false)">Cancel</button>
+  </div>
+</div>
+

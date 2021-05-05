@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; background-color: rgb(199, 199, 228);}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.main-div {
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-card { height:75%; width: 75%; margin: 0 25px;}
+
+.mat-figure {
+  flex-direction: column;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+}
+
+.dayBlock .mat-figure .deleteFunc
+{
+  color: black !important;
+  display: flex;
+  flex-direction: row;
+  font-size: 10px;
+}
+
+.deleteFunc > *
+{
+  cursor: pointer;
+}
+
+.deleteFunc span {margin: 0 1em;}
+
+
+.mat-figure .reminderSection
+{
+  flex: 2 1 auto;
+  margin: 10px 0px;
+}
+
+.reminderSection .remindFieldsDiv
+{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.reminderSection div
+{
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.dayBlock { background-color: rgb(238, 238, 238); }
+
+.daysOfWeek {
+  background-color: rgb(43, 119, 233);
+  color: white;
+  justify-content: center !important ;
+  align-items: center !important;
+}
+
+.dayNumber{ margin: 5px 0 5px 5px;}
+
+.freeDay { color:rgb(43, 119, 233); background-color: rgb(190, 190, 190);}
+.outOfMonth { color:rgba(99, 99, 99, 0.719); }
+
+.actionIcon{color:black !important; font-size: 15px;}
+.movementIcon{color:white;}
+
+.hoverItem{ border: rgb(69, 69, 197) solid 2px; z-index: 20;}
+
+.fieldStrut{
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.colorField { width: 40% !important;}
+.colorPick { width: 50% !important;}
+textarea { resize: none !important; }
+
+.mat-grid-tile
+{
+  overflow-wrap: anywhere !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
+}
+
+.mat-form-field-infix
+{
+  display: inline-block !important;
+  width: 10em !important;
+}

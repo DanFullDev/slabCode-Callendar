@@ -1,0 +1,18 @@
+<div>
+  <h1 mat-dialog-title> Delete reminders </h1>
+  <div>
+    <mat-form-field appareance="fill">
+      <mat-label>Reminders List</mat-label>
+      <mat-select [(value)]="cornerVal">
+        <mat-option *ngFor="let corner of data; let ing = index" [value]="corner"  [style.background-color]="corner.color">
+          {{(corner.reminderText)}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="deleteReminder(true, false)">Delete Selected Reminder</button>
+    <button mat-raised-button color="warn" (click)="deleteReminder(true, true)">Delete All Reminders</button>
+    <button mat-raised-button color="warn" (click)="deleteReminder(false, false)">Cancel</button>
+  </div>
+</div>
